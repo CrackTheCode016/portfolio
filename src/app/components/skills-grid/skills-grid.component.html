@@ -1,0 +1,34 @@
+<div class="skills-grid">
+  @for (group of groups(); track group.title; let index = $index) {
+    <mat-card
+      class="skill-card"
+      appearance="outlined"
+      appReveal
+      [revealDelay]="index * 100"
+      [style.--skill-card-delay]="index * 1.6 + 's'"
+    >
+      <mat-card-header class="skill-card__header">
+        <mat-card-title>{{ group.title }}</mat-card-title>
+      </mat-card-header>
+      <mat-divider class="skill-card__divider" />
+      <mat-card-content class="skill-card__content">
+        <mat-chip-set class="chip-row skill-card__chips" [attr.aria-label]="group.title + ' skills'">
+          @for (skill of group.items; track skill) {
+            @let tone = toneForSkill(skill);
+            <mat-chip
+              class="skill-chip tone-chip"
+              [style.--tone-chip-background]="tone.background"
+              [style.--tone-chip-foreground]="tone.foreground"
+              [style.--tone-chip-outline]="tone.outline"
+              [style.--mdc-chip-elevated-container-color]="tone.background"
+              [style.--mdc-chip-label-text-color]="tone.foreground"
+              [style.--mdc-chip-outline-color]="tone.outline"
+            >
+              {{ skill }}
+            </mat-chip>
+          }
+        </mat-chip-set>
+      </mat-card-content>
+    </mat-card>
+  }
+</div>

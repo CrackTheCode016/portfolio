@@ -1,0 +1,520 @@
+@use '@angular/material' as mat;
+
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700;800&family=Google+Sans+Text:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0');
+
+$portfolio-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$green-palette,
+    tertiary: mat.$azure-palette,
+    use-system-variables: true,
+    system-variables-prefix: mat-sys,
+  ),
+  typography: (
+    use-system-variables: true,
+    system-variables-prefix: mat-sys,
+    plain-family: '"Google Sans Text", "Google Sans", "Segoe UI", sans-serif',
+    brand-family: '"Google Sans", "Google Sans Text", "Segoe UI", sans-serif',
+  ),
+  density: (
+    scale: 0,
+  ),
+));
+
+@include mat.core();
+
+:root {
+  @include mat.all-component-themes($portfolio-theme);
+  @include mat.system-level-colors($portfolio-theme);
+  @include mat.system-level-typography($portfolio-theme);
+
+  --color-accent: #95c623;
+  --color-primary: #0e4749;
+  --color-muted: #95c623;
+  --color-surface: #efe7da;
+  --color-ink: #002626;
+  --color-border: rgba(14, 71, 73, 0.16);
+  --color-border-strong: rgba(14, 71, 73, 0.26);
+  --bubble-surface:
+    linear-gradient(180deg, rgba(255, 250, 244, 0.94), rgba(244, 237, 225, 0.96));
+  --bubble-surface-soft:
+    linear-gradient(180deg, rgba(255, 249, 241, 0.8), rgba(241, 234, 220, 0.88));
+  --bubble-shadow: 0 18px 44px rgba(0, 38, 38, 0.08);
+  --bubble-shadow-soft: 0 10px 28px rgba(0, 38, 38, 0.06);
+  --focus-ring: rgba(149, 198, 35, 0.3);
+  --surface-tint: rgba(255, 249, 241, 0.72);
+  --surface-tint-strong: rgba(255, 248, 240, 0.76);
+  --media-gradient-start: rgba(14, 71, 73, 0.14);
+  --media-gradient-end: rgba(149, 198, 35, 0.18);
+  --media-badge-surface: rgba(235, 244, 246, 0.9);
+  --dialog-backdrop: rgba(5, 4, 1, 0.42);
+  --topbar-surface: color-mix(in srgb, var(--color-accent) 10%, var(--mat-sys-surface-container));
+  --tone-angular-bg: rgba(221, 0, 49, 0.14);
+  --tone-angular-fg: #97112f;
+  --tone-angular-outline: rgba(221, 0, 49, 0.22);
+  --tone-rust-bg: rgba(183, 65, 14, 0.14);
+  --tone-rust-fg: #8f3b17;
+  --tone-rust-outline: rgba(183, 65, 14, 0.22);
+  --tone-js-bg: rgba(240, 219, 79, 0.26);
+  --tone-js-fg: #5c4a00;
+  --tone-js-outline: rgba(240, 219, 79, 0.3);
+  --tone-ts-bg: rgba(49, 120, 198, 0.16);
+  --tone-ts-fg: #1d5d9b;
+  --tone-ts-outline: rgba(49, 120, 198, 0.24);
+  --tone-python-bg: rgba(55, 118, 171, 0.16);
+  --tone-python-fg: #245581;
+  --tone-python-outline: rgba(55, 118, 171, 0.24);
+  --tone-shell-bg: rgba(14, 71, 73, 0.14);
+  --tone-shell-fg: #0e4749;
+  --tone-shell-outline: rgba(14, 71, 73, 0.24);
+  --tone-java-bg: rgba(14, 71, 73, 0.12);
+  --tone-java-fg: #0e4749;
+  --tone-java-outline: rgba(14, 71, 73, 0.22);
+  --tone-frontend-bg: rgba(149, 198, 35, 0.16);
+  --tone-frontend-fg: #4e6c02;
+  --tone-frontend-outline: rgba(149, 198, 35, 0.24);
+  --tone-vue-bg: rgba(65, 184, 131, 0.16);
+  --tone-vue-fg: #247753;
+  --tone-vue-outline: rgba(65, 184, 131, 0.22);
+  --tone-firebase-bg: rgba(149, 198, 35, 0.16);
+  --tone-firebase-fg: #4e6c02;
+  --tone-firebase-outline: rgba(149, 198, 35, 0.24);
+  --tone-api-bg: rgba(14, 71, 73, 0.14);
+  --tone-api-fg: #0e4749;
+  --tone-api-outline: rgba(14, 71, 73, 0.24);
+  --tone-docs-bg: rgba(239, 231, 218, 0.92);
+  --tone-docs-fg: #0e4749;
+  --tone-docs-outline: rgba(14, 71, 73, 0.2);
+  --tone-devops-bg: rgba(0, 38, 38, 0.1);
+  --tone-devops-fg: #002626;
+  --tone-devops-outline: rgba(0, 38, 38, 0.18);
+  --tone-web3-bg: rgba(230, 0, 122, 0.12);
+  --tone-web3-fg: #a11460;
+  --tone-web3-outline: rgba(230, 0, 122, 0.2);
+  --space-1: 0.5rem;
+  --space-2: 0.75rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --page-gradient:
+    radial-gradient(circle at top left, rgba(149, 198, 35, 0.16), transparent 28%),
+    radial-gradient(circle at top right, rgba(14, 71, 73, 0.09), transparent 22%),
+    linear-gradient(180deg, #efe7da 0%, #f7f2e9 58%, #f3ede3 100%);
+
+  --mat-sys-primary: #0e4749;
+  --mat-sys-on-primary: #efe7da;
+  --mat-sys-secondary: #95c623;
+  --mat-sys-on-secondary: #002626;
+  --mat-sys-tertiary: #95c623;
+  --mat-sys-on-tertiary: #002626;
+  --mat-sys-surface: #efe7da;
+  --mat-sys-on-surface: #002626;
+  --mat-sys-surface-container: rgba(239, 231, 218, 0.96);
+  --mat-sys-surface-container-high: rgba(248, 242, 234, 0.98);
+  --mat-sys-outline-variant: rgba(14, 71, 73, 0.16);
+}
+
+:root[data-theme='dark'] {
+  --tone-foreground-ghost: ghostwhite;
+  --color-accent: #95c623;
+  --color-primary: #95c623;
+  --color-muted: #b7dd58;
+  --color-surface: #0c1717;
+  --color-ink: #efe7da;
+  --color-border: rgba(149, 198, 35, 0.16);
+  --color-border-strong: rgba(149, 198, 35, 0.3);
+  --bubble-surface:
+    linear-gradient(180deg, rgba(12, 23, 23, 0.94), rgba(6, 18, 18, 0.96));
+  --bubble-surface-soft:
+    linear-gradient(180deg, rgba(13, 28, 28, 0.88), rgba(8, 18, 18, 0.9));
+  --bubble-shadow: 0 18px 44px rgba(0, 0, 0, 0.24);
+  --bubble-shadow-soft: 0 10px 28px rgba(0, 0, 0, 0.2);
+  --focus-ring: rgba(149, 198, 35, 0.36);
+  --surface-tint: rgba(18, 36, 36, 0.88);
+  --surface-tint-strong: rgba(18, 36, 36, 0.94);
+  --media-gradient-start: rgba(14, 71, 73, 0.34);
+  --media-gradient-end: rgba(149, 198, 35, 0.22);
+  --media-badge-surface: rgba(0, 38, 38, 0.78);
+  --dialog-backdrop: rgba(0, 0, 0, 0.62);
+  --topbar-surface: color-mix(in srgb, var(--color-accent) 12%, var(--mat-sys-surface-container));
+  --tone-angular-bg: rgba(221, 0, 49, 0.22);
+  --tone-angular-fg: var(--tone-foreground-ghost);
+  --tone-angular-outline: rgba(221, 0, 49, 0.28);
+  --tone-rust-bg: rgba(183, 65, 14, 0.22);
+  --tone-rust-fg: var(--tone-foreground-ghost);
+  --tone-rust-outline: rgba(183, 65, 14, 0.28);
+  --tone-js-bg: rgba(138, 116, 0, 0.42);
+  --tone-js-fg: var(--tone-foreground-ghost);
+  --tone-js-outline: rgba(240, 219, 79, 0.28);
+  --tone-ts-bg: rgba(49, 120, 198, 0.26);
+  --tone-ts-fg: var(--tone-foreground-ghost);
+  --tone-ts-outline: rgba(49, 120, 198, 0.3);
+  --tone-python-bg: rgba(55, 118, 171, 0.26);
+  --tone-python-fg: var(--tone-foreground-ghost);
+  --tone-python-outline: rgba(55, 118, 171, 0.3);
+  --tone-shell-bg: rgba(14, 71, 73, 0.3);
+  --tone-shell-fg: var(--tone-foreground-ghost);
+  --tone-shell-outline: rgba(149, 198, 35, 0.18);
+  --tone-java-bg: rgba(14, 71, 73, 0.3);
+  --tone-java-fg: var(--tone-foreground-ghost);
+  --tone-java-outline: rgba(149, 198, 35, 0.18);
+  --tone-frontend-bg: rgba(149, 198, 35, 0.22);
+  --tone-frontend-fg: var(--tone-foreground-ghost);
+  --tone-frontend-outline: rgba(149, 198, 35, 0.28);
+  --tone-vue-bg: rgba(65, 184, 131, 0.22);
+  --tone-vue-fg: var(--tone-foreground-ghost);
+  --tone-vue-outline: rgba(65, 184, 131, 0.28);
+  --tone-firebase-bg: rgba(149, 198, 35, 0.24);
+  --tone-firebase-fg: var(--tone-foreground-ghost);
+  --tone-firebase-outline: rgba(149, 198, 35, 0.28);
+  --tone-api-bg: rgba(14, 71, 73, 0.3);
+  --tone-api-fg: var(--tone-foreground-ghost);
+  --tone-api-outline: rgba(149, 198, 35, 0.18);
+  --tone-docs-bg: rgba(14, 71, 73, 0.26);
+  --tone-docs-fg: var(--tone-foreground-ghost);
+  --tone-docs-outline: rgba(149, 198, 35, 0.22);
+  --tone-devops-bg: rgba(0, 38, 38, 0.3);
+  --tone-devops-fg: var(--tone-foreground-ghost);
+  --tone-devops-outline: rgba(149, 198, 35, 0.16);
+  --tone-web3-bg: rgba(230, 0, 122, 0.2);
+  --tone-web3-fg: var(--tone-foreground-ghost);
+  --tone-web3-outline: rgba(230, 0, 122, 0.26);
+  --page-gradient:
+    radial-gradient(circle at top left, rgba(149, 198, 35, 0.1), transparent 28%),
+    radial-gradient(circle at top right, rgba(14, 71, 73, 0.12), transparent 22%),
+    linear-gradient(180deg, #081414 0%, #0b1b1b 55%, #091414 100%);
+
+  --mat-sys-primary: #95c623;
+  --mat-sys-on-primary: #002626;
+  --mat-sys-secondary: #0e4749;
+  --mat-sys-on-secondary: #efe7da;
+  --mat-sys-tertiary: #95c623;
+  --mat-sys-on-tertiary: #002626;
+  --mat-sys-surface: #081414;
+  --mat-sys-on-surface: #efe7da;
+  --mat-sys-surface-container: rgba(11, 27, 27, 0.96);
+  --mat-sys-surface-container-high: rgba(14, 32, 32, 0.98);
+  --mat-sys-outline-variant: rgba(149, 198, 35, 0.14);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--page-gradient);
+  color: var(--color-ink);
+  font-family: var(--mat-sys-body-large-font, "Google Sans Text", "Google Sans", "Segoe UI", sans-serif);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--mat-sys-title-large-font, "Google Sans", "Google Sans Text", "Segoe UI", sans-serif);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+a,
+button,
+input,
+textarea {
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.timeline {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.brand,
+.topbar__links a {
+  text-decoration: none;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-ink);
+  font-weight: 700;
+}
+
+.topbar__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.topbar__links a {
+  color: var(--color-muted);
+}
+
+.mat-mdc-unelevated-button.button--raised,
+.mat-mdc-unelevated-button.button--primary {
+  --mdc-filled-button-container-color: var(--color-primary);
+  --mdc-filled-button-label-text-color: var(--color-surface);
+}
+
+.mat-mdc-outlined-button.button--flat,
+.mat-mdc-outlined-button.icon-button,
+.carousel-tab {
+  --mdc-outlined-button-outline-color: var(--color-border-strong);
+  --mdc-outlined-button-label-text-color: var(--color-ink);
+  background: var(--surface-tint);
+}
+
+.mat-mdc-button-base {
+  border-radius: 1rem !important;
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+.mat-mdc-text-field-wrapper {
+  border-radius: 1rem !important;
+}
+
+.mat-mdc-card {
+  border-radius: 1.5rem !important;
+}
+
+.mat-mdc-card.hero-card,
+.mat-mdc-card.timeline-card,
+.mat-mdc-card.carousel-card,
+.mat-mdc-card.info-card,
+.mat-mdc-card.contact-panel,
+.mat-mdc-card.catalog-card,
+.mat-mdc-card.detail-modal {
+  border: 1px solid var(--color-border);
+  background: var(--bubble-surface);
+  box-shadow: var(--bubble-shadow-soft);
+}
+
+.mat-mdc-chip {
+  --mdc-chip-elevated-container-color: rgba(149, 198, 35, 0.18);
+  --mdc-chip-label-text-color: var(--color-ink);
+  --mdc-chip-outline-color: var(--color-border);
+  max-width: 100%;
+}
+
+.mat-mdc-chip.tone-chip {
+  --mdc-chip-elevated-container-color: var(--tone-chip-background, rgba(149, 198, 35, 0.18));
+  --mdc-chip-label-text-color: var(--tone-chip-foreground, var(--color-ink));
+  --mdc-chip-outline-color: var(--tone-chip-outline, var(--color-border));
+  border: 1px solid var(--tone-chip-outline, var(--color-border));
+  background: var(--tone-chip-background, rgba(149, 198, 35, 0.18));
+  color: var(--tone-chip-foreground, var(--color-ink));
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  box-shadow: inset 0 1px 0 color-mix(in srgb, white 18%, transparent);
+}
+
+.mat-mdc-chip.tone-chip .mdc-evolution-chip__text-label {
+  color: var(--tone-chip-foreground, var(--color-ink)) !important;
+}
+
+:root[data-theme='dark'] .mat-mdc-chip.tone-chip,
+:root[data-theme='dark'] .mat-mdc-chip.tone-chip .mdc-evolution-chip__text-label {
+  color: var(--tone-foreground-ghost) !important;
+}
+
+.mat-mdc-chip .mdc-evolution-chip__text-label,
+.mat-mdc-chip.tone-chip .mdc-evolution-chip__action,
+.mat-mdc-chip.tone-chip .mdc-evolution-chip__cell,
+.mat-mdc-chip.tone-chip .mdc-evolution-chip__text-label,
+.mat-mdc-tab .mdc-tab__text-label {
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
+
+.card-grid,
+.skills-grid,
+.media-layout,
+.contact-layout,
+.catalog-grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.mat-mdc-card-title,
+.mat-mdc-card-subtitle,
+.mat-mdc-card-content p,
+.mat-mdc-card-content li,
+.mat-mdc-card-content a,
+.mat-mdc-card-actions a,
+.mat-mdc-card-actions button {
+  overflow-wrap: anywhere;
+}
+
+.mat-mdc-card-header-text {
+  min-width: 0;
+}
+
+.mat-mdc-card-header {
+  align-items: flex-start;
+}
+
+.mat-mdc-card-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+.mat-mdc-card-subtitle {
+  color: var(--color-accent) !important;
+  font-weight: 700;
+}
+
+.card-grid {
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: flex-end;
+  margin-top: auto;
+  padding: 0 var(--space-4) var(--space-4) !important;
+}
+
+.skills-grid {
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+}
+
+.media-layout {
+  grid-template-columns: 1fr;
+}
+
+.contact-layout {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+}
+
+.catalog-grid {
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+.card-grid > *,
+.skills-grid > *,
+.catalog-grid > *,
+.timeline > * {
+  min-width: 0;
+}
+
+.carousel__tabs .mdc-tab {
+  min-width: 0;
+  padding-inline: 0.1rem;
+}
+
+.carousel__tabs .mdc-tab__text-label {
+  font-weight: 700;
+  color: inherit;
+}
+
+.carousel-tab {
+  display: grid;
+  gap: 0.2rem;
+  padding: var(--space-3);
+  text-align: left;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(1.2rem) scale(0.985);
+  transition:
+    opacity 380ms ease,
+    transform 560ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: 0ms;
+}
+
+.reveal--visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+@media (max-width: 900px) {
+  .timeline,
+  .media-layout,
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .card-grid,
+  .skills-grid,
+  .catalog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mat-mdc-tab-header {
+    overflow-x: auto;
+  }
+
+  .mat-mdc-tab .mdc-tab__text-label {
+    white-space: normal;
+    text-align: center;
+  }
+}

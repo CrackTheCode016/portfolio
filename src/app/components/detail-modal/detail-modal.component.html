@@ -1,0 +1,51 @@
+@if (data(); as modal) {
+  <div class="modal-backdrop" (click)="close()">
+    <mat-card
+      class="detail-modal"
+      appearance="outlined"
+      role="dialog"
+      aria-modal="true"
+      [attr.aria-label]="modal.title"
+      (click)="$event.stopPropagation()"
+    >
+      <mat-card-header class="detail-modal__header">
+        <div class="detail-modal__heading">
+          <p class="eyebrow">{{ modal.eyebrow }}</p>
+          <mat-card-title>{{ modal.title }}</mat-card-title>
+          @if (modal.subtitle) {
+            <mat-card-subtitle class="detail-modal__subtitle">{{ modal.subtitle }}</mat-card-subtitle>
+          }
+        </div>
+        <button mat-stroked-button type="button" class="button--flat" (click)="close()">Close</button>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p class="detail-modal__summary">{{ modal.summary }}</p>
+
+        <ul class="detail-modal__list">
+          @for (detail of modal.details; track detail) {
+            <li>{{ detail }}</li>
+          }
+        </ul>
+
+        @if (modal.chips?.length) {
+          <mat-chip-set class="chip-row">
+            @for (chip of modal.chips; track chip) {
+              <mat-chip>{{ chip }}</mat-chip>
+            }
+          </mat-chip-set>
+        }
+      </mat-card-content>
+
+      @if (modal.links?.length) {
+        <mat-card-actions align="end" class="detail-modal__actions">
+          @for (link of modal.links; track link.href) {
+            <a mat-flat-button class="button--raised" [href]="link.href" target="_blank" rel="noreferrer">
+              {{ link.label }}
+            </a>
+          }
+        </mat-card-actions>
+      }
+    </mat-card>
+  </div>
+}

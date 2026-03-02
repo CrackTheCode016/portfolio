@@ -1,0 +1,63 @@
+:host {
+  display: block;
+}
+
+.skill-card {
+  height: 100%;
+  min-width: 0;
+  overflow: hidden;
+  position: relative;
+  border-color: var(--color-border-strong);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-accent) 14%, transparent),
+    var(--bubble-shadow-soft);
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--color-accent) 12%, transparent), transparent 42%);
+  opacity: 0.85;
+}
+
+.skill-card .mat-mdc-card-header,
+.skill-card .mat-mdc-card-header-text {
+  min-width: 0;
+}
+
+.skill-card__header {
+  padding-bottom: var(--space-2);
+}
+
+.skill-card__divider {
+  margin-inline: var(--space-4);
+  opacity: 0.72;
+}
+
+.skill-card__content {
+  display: grid;
+  align-content: start;
+  min-width: 0;
+  position: relative;
+  z-index: 1;
+  padding-top: var(--space-3);
+}
+
+.skill-card__chips {
+  margin-top: 0;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.skill-chip {
+  max-width: 100%;
+}
+
+.skill-chip .mdc-evolution-chip__action,
+.skill-chip .mdc-evolution-chip__cell,
+.skill-chip .mdc-evolution-chip__text-label {
+  max-width: 100%;
+}

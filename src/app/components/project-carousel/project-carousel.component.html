@@ -1,0 +1,55 @@
+<div class="carousel" appReveal>
+  <div class="carousel__controls">
+    <button mat-icon-button type="button" class="carousel__control" (click)="previousProject()" aria-label="Show previous project">
+      <mat-icon fontSet="material-symbols-outlined">arrow_back</mat-icon>
+    </button>
+    <button mat-icon-button type="button" class="carousel__control" (click)="nextProject()" aria-label="Show next project">
+      <mat-icon fontSet="material-symbols-outlined">arrow_forward</mat-icon>
+    </button>
+  </div>
+
+  <mat-tab-group
+    class="carousel__tabs"
+    [selectedIndex]="carouselIndex()"
+    (selectedIndexChange)="selectProject($event)"
+    animationDuration="300ms"
+  >
+    @for (project of projects(); track project.slug) {
+      <mat-tab [label]="project.name">
+        <mat-card class="carousel-card" appearance="outlined">
+          <app-project-media
+            [title]="project.name"
+            [category]="project.category"
+            [thumbnails]="project.thumbnails"
+          />
+          <mat-card-header>
+            <mat-card-subtitle>{{ project.category }}</mat-card-subtitle>
+            <mat-card-title>{{ project.name }}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p class="carousel-card__tagline">{{ project.tagline }}</p>
+            <p>{{ project.description }}</p>
+            <mat-chip-set class="chip-row">
+              @for (item of project.stack.slice(0, 4); track item) {
+                <mat-chip>{{ item }}</mat-chip>
+              }
+            </mat-chip-set>
+          </mat-card-content>
+          <mat-card-actions align="end" class="card-actions carousel-card__actions">
+            <a mat-stroked-button class="button--flat" [href]="githubUrl(project)" target="_blank" rel="noreferrer">
+              GitHub
+            </a>
+            @if (project.liveUrl) {
+              <a mat-stroked-button class="button--flat" [href]="project.liveUrl" target="_blank" rel="noreferrer">
+                Live site
+              </a>
+            }
+            <button mat-flat-button type="button" class="button--raised" (click)="projectSelected.emit(project.slug)">
+              More details
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-tab>
+    }
+  </mat-tab-group>
+</div>

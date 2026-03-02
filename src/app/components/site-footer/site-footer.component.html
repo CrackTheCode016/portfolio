@@ -1,0 +1,20 @@
+<footer class="site-footer" aria-label="Footer">
+  <mat-card class="site-footer__card" appearance="outlined">
+    <mat-card-content class="site-footer__content">
+      <nav class="site-footer__nav" aria-label="Footer links">
+        @for (link of links(); track link.href) {
+          @if (link.external) {
+            <a mat-button class="site-footer__link" [href]="link.href" target="_blank" rel="noreferrer">{{ link.label }}</a>
+          } @else {
+            <a mat-button class="site-footer__link" [href]="link.href">{{ link.label }}</a>
+          }
+        }
+      </nav>
+
+      <div class="site-footer__meta-group">
+        <p class="site-footer__eyebrow">Bader Youssef</p>
+        <p class="site-footer__meta">{{ currentYear }}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</footer>

@@ -1,0 +1,46 @@
+@if (mediaItems().length) {
+  <div class="project-media__gallery">
+    <div class="project-media__track" [style.transform]="'translateX(-' + activeIndex() * 100 + '%)'">
+      @for (thumb of mediaItems(); track thumb.src) {
+        <img class="project-media__image" [src]="thumb.src" [alt]="thumb.alt" />
+      }
+    </div>
+
+    @if (hasGallery()) {
+      <div class="project-media__indicators" aria-label="Project image selection">
+        @for (thumb of mediaItems(); track thumb.src; let index = $index) {
+          <button
+            type="button"
+            class="project-media__indicator"
+            [class.project-media__indicator--active]="index === activeIndex()"
+            [attr.aria-label]="'Show image ' + (index + 1)"
+            [attr.aria-pressed]="index === activeIndex()"
+            (click)="selectImage(index)"
+          ></button>
+        }
+      </div>
+    }
+  </div>
+} @else if (isToolVariant()) {
+  <div class="project-media__placeholder project-media__placeholder--tool" aria-hidden="true">
+    <div class="project-media__tool-canvas">
+      <div class="project-media__tool-badge">
+        <mat-icon fontSet="material-symbols-outlined">{{ placeholderIcon() }}</mat-icon>
+      </div>
+      <div class="project-media__tool-monogram">{{ placeholderInitials() }}</div>
+      <div class="project-media__tool-lines">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+} @else {
+  <div class="project-media__placeholder" aria-hidden="true">
+    <div class="project-media__badge">
+      <mat-icon fontSet="material-symbols-outlined">{{ placeholderIcon() }}</mat-icon>
+    </div>
+    <div class="project-media__monogram">{{ placeholderInitials() }}</div>
+    <p class="project-media__message">{{ placeholderMessage() }}</p>
+  </div>
+}

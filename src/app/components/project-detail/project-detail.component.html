@@ -1,0 +1,20 @@
+<article class="detail-card" appReveal>
+  <div class="detail-card__meta">
+    <p>{{ project().category }}</p>
+    @if (project().period) {
+      <p>{{ project().period }}</p>
+    }
+  </div>
+  <p class="detail-card__tagline">{{ project().tagline }}</p>
+  <p>{{ project().description }}</p>
+  <ul>
+    @for (detail of project().details; track detail) {
+      <li>{{ detail }}</li>
+    }
+  </ul>
+  <div class="chip-row">
+    @for (item of project().stack; track item) {
+      <span class="chip">{{ item }}</span>
+    }
+  </div>
+</article>

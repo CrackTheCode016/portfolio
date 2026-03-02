@@ -1,0 +1,17 @@
+<div class="timeline">
+  @for (role of items(); track role.company; let index = $index) {
+    <mat-card class="timeline-card" appearance="outlined" appReveal [revealDelay]="index * 120">
+      <mat-card-header>
+        <mat-card-subtitle>{{ role.period }}</mat-card-subtitle>
+        <mat-card-title>{{ role.company }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ role.role }}</p>
+        <p>{{ role.summary }}</p>
+      </mat-card-content>
+      <mat-card-actions align="end" class="card-actions">
+        <button mat-flat-button type="button" class="button--raised" (click)="roleSelected.emit(role)">View role</button>
+      </mat-card-actions>
+    </mat-card>
+  }
+</div>

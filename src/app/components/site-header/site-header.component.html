@@ -1,0 +1,61 @@
+<header class="topbar-shell">
+  <mat-toolbar class="topbar" aria-label="Primary">
+    <a mat-button class="brand" routerLink="/" (click)="closeMobileNav()">BY</a>
+
+    <div class="topbar__actions">
+      <nav class="topbar__links topbar__links--desktop" aria-label="Primary navigation">
+        @for (link of links(); track link.href) {
+          @if (link.external) {
+            <a mat-button class="topbar__link" [href]="link.href">{{ link.label }}</a>
+          } @else {
+            <a mat-button class="topbar__link" [routerLink]="link.href">{{ link.label }}</a>
+          }
+        }
+      </nav>
+
+      <button
+        mat-icon-button
+        class="topbar__theme-toggle"
+        type="button"
+        [attr.aria-label]="themeLabel()"
+        (click)="toggleTheme()"
+      >
+        <mat-icon fontSet="material-symbols-outlined">{{ themeIcon() }}</mat-icon>
+      </button>
+
+      <button
+        mat-icon-button
+        class="topbar__menu-trigger"
+        type="button"
+        [attr.aria-expanded]="mobileNavOpen()"
+        aria-controls="mobile-primary-navigation"
+        [attr.aria-label]="mobileNavOpen() ? 'Close navigation menu' : 'Open navigation menu'"
+        (click)="toggleMobileNav()"
+      >
+        <mat-icon fontSet="material-symbols-outlined">{{ mobileNavOpen() ? 'close' : 'menu' }}</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+
+  @if (mobileNavOpen()) {
+    <nav
+      id="mobile-primary-navigation"
+      class="topbar__mobile-nav"
+      aria-label="Mobile primary navigation"
+    >
+      <mat-nav-list>
+        <button mat-list-item type="button" (click)="toggleTheme(); closeMobileNav()">
+          <mat-icon matListItemIcon fontSet="material-symbols-outlined">{{ themeIcon() }}</mat-icon>
+          <span matListItemTitle>{{ themeLabel() }}</span>
+        </button>
+        @for (link of links(); track link.href) {
+          @if (link.external) {
+            <a mat-list-item [href]="link.href" (click)="closeMobileNav()">{{ link.label }}</a>
+          } @else {
+            <a mat-list-item [routerLink]="link.href" (click)="closeMobileNav()">{{ link.label }}</a>
+          }
+        }
+      </mat-nav-list>
+    </nav>
+  }
+</header>

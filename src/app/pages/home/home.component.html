@@ -1,0 +1,211 @@
+<div class="site-shell">
+  <div class="site-shell__background" aria-hidden="true">
+    <div class="site-shell__grid">
+      <span class="site-shell__float site-shell__float--one"></span>
+      <span class="site-shell__float site-shell__float--two"></span>
+      <span class="site-shell__float site-shell__float--three"></span>
+      <span class="site-shell__halo site-shell__halo--one"></span>
+    </div>
+  </div>
+  <header class="hero">
+    <app-site-header [links]="navLinks" />
+
+    <section class="hero__content">
+      <mat-card class="hero-bubble" appearance="outlined" appReveal>
+        <mat-card-content class="hero__copy">
+          <p class="eyebrow">Portfolio</p>
+          <h1>{{ profile.name }}</h1>
+          <p class="headline">{{ profile.headline }}</p>
+          <mat-chip-set class="hero__tags">
+            @for (tag of heroTags; track tag) {
+              <mat-chip
+                class="hero-tag tone-chip"
+                [style.--tone-chip-background]="tag.background"
+                [style.--tone-chip-foreground]="tag.foreground"
+                [style.--tone-chip-outline]="tag.outline"
+                [style.--mdc-chip-elevated-container-color]="tag.background"
+                [style.--mdc-chip-label-text-color]="tag.foreground"
+                [style.--mdc-chip-outline-color]="tag.outline"
+              >
+                {{ tag.label }}
+              </mat-chip>
+            }
+          </mat-chip-set>
+          <div class="hero__actions">
+            <a mat-flat-button class="button--raised" href="#projects">View projects</a>
+            <a mat-stroked-button class="button--flat" href="#contact">Contact</a>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </section>
+  </header>
+
+  <main>
+    <section class="section" aria-labelledby="skills-title">
+      <mat-card class="section-shell" appearance="outlined">
+        <mat-card-content class="section-shell__content">
+          <app-section-heading
+            headingId="skills-title"
+            eyebrow="Skills"
+            title="The tools, languages, and systems I use most often."
+          />
+          <app-skills-grid [groups]="profile.skills" />
+        </mat-card-content>
+      </mat-card>
+    </section>
+
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <mat-card class="section-shell" appearance="outlined">
+        <mat-card-content class="section-shell__content">
+          <app-section-heading
+            headingId="projects-title"
+            eyebrow="Projects"
+            title="Selected work across products, protocols, and internal tools."
+          />
+          <app-project-carousel [projects]="featuredProjects" (projectSelected)="openProject($event)" />
+        </mat-card-content>
+      </mat-card>
+    </section>
+
+    <section class="section" aria-labelledby="tooling-title">
+      <mat-card class="section-shell" appearance="outlined">
+        <mat-card-content class="section-shell__content">
+          <app-section-heading
+            headingId="tooling-title"
+            eyebrow="Tooling"
+            title="Templates, dashboards, and workflow tools built for real use."
+          />
+
+          <div class="card-grid">
+            @for (tool of profile.tooling; track tool.slug; let index = $index) {
+              <mat-card class="info-card" appearance="outlined" appReveal [revealDelay]="index * 110">
+                <app-project-media
+                  [title]="tool.name"
+                  [category]="tool.category"
+                  [thumbnails]="tool.thumbnails"
+                  variant="tool"
+                />
+                <mat-card-header>
+                  <mat-card-subtitle>{{ tool.category }}</mat-card-subtitle>
+                  <mat-card-title>{{ tool.name }}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                  <p>{{ tool.tagline }}</p>
+                </mat-card-content>
+                <mat-card-actions align="end" class="card-actions">
+                  <a mat-stroked-button class="button--flat" [href]="githubUrl(tool)" target="_blank" rel="noreferrer">
+                    GitHub
+                  </a>
+                  @if (tool.liveUrl) {
+                    <a mat-stroked-button class="button--flat" [href]="tool.liveUrl" target="_blank" rel="noreferrer">
+                      Live site
+                    </a>
+                  }
+                  <button mat-flat-button type="button" class="button--raised" (click)="openProjectModal(tool)">Open details</button>
+                </mat-card-actions>
+              </mat-card>
+            }
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </section>
+
+    <section class="section" id="additional-work" aria-labelledby="additional-work-title">
+      <mat-card class="section-shell" appearance="outlined">
+        <mat-card-content class="section-shell__content">
+          <app-section-heading
+            headingId="additional-work-title"
+            eyebrow="More work"
+            title="Documentation, courses, SDK work, and early-stage prototypes."
+          />
+
+          <div class="card-grid">
+            @for (project of additionalProjects; track project.slug; let index = $index) {
+              <mat-card class="info-card" appearance="outlined" appReveal [revealDelay]="index * 110">
+                <mat-card-header>
+                  <mat-card-subtitle>{{ project.category }}</mat-card-subtitle>
+                  <mat-card-title>{{ project.name }}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                  <p>{{ project.tagline }}</p>
+                </mat-card-content>
+                <mat-card-actions align="end" class="card-actions">
+                  <a mat-stroked-button class="button--flat" [href]="githubUrl(project)" target="_blank" rel="noreferrer">
+                    GitHub
+                  </a>
+                  @if (project.liveUrl) {
+                    <a mat-stroked-button class="button--flat" [href]="project.liveUrl" target="_blank" rel="noreferrer">
+                      Live site
+                    </a>
+                  }
+                  <button mat-flat-button type="button" class="button--raised" (click)="openProjectModal(project)">Open details</button>
+                </mat-card-actions>
+              </mat-card>
+            }
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </section>
+
+    <section class="section" id="media" aria-labelledby="media-title">
+      <mat-card class="section-shell" appearance="outlined">
+        <mat-card-content class="section-shell__content">
+          <app-section-heading
+            headingId="media-title"
+            eyebrow="Writing and talks"
+            title="Articles, talks, and recorded sessions focused on practical engineering."
+          />
+
+          <div class="media-layout">
+            <app-media-grid title="Featured talks & videos" actionLabel="Watch" [items]="profile.talks" />
+            <app-media-grid title="Selected writing" actionLabel="Read article" [items]="profile.writing" />
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </section>
+
+    <section class="section" id="experience" aria-labelledby="experience-title">
+      <mat-card class="section-shell" appearance="outlined">
+        <mat-card-content class="section-shell__content">
+          <app-section-heading
+            headingId="experience-title"
+            eyebrow="Experience"
+            title="Roles across product engineering, systems, and developer education."
+          />
+          <app-experience-timeline [items]="profile.experience" (roleSelected)="openExperienceModal($event)" />
+        </mat-card-content>
+      </mat-card>
+    </section>
+
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <mat-card class="section-shell" appearance="outlined">
+        <mat-card-content class="section-shell__content">
+          <app-section-heading
+            headingId="contact-title"
+            eyebrow="Contact"
+            title="Product work, tooling, docs, or workshops."
+          />
+
+          <p class="contact-intro" appReveal>
+            If you are working on a product, internal tool, developer platform, course, or documentation effort,
+            send a note with a little context about the work and where you need help.
+          </p>
+
+          <mat-nav-list class="contact-points" aria-label="Contact methods" appReveal [revealDelay]="80">
+            @for (item of contactMethods; track item.href) {
+              <a mat-list-item [href]="item.href" target="_blank" rel="noreferrer">
+                <mat-icon matListItemIcon fontSet="material-symbols-outlined">{{ item.icon }}</mat-icon>
+                <span matListItemTitle>{{ item.label }}</span>
+                <span matListItemLine>{{ item.value }}</span>
+              </a>
+            }
+          </mat-nav-list>
+        </mat-card-content>
+      </mat-card>
+    </section>
+  </main>
+
+  <app-site-footer [links]="footerLinks" />
+
+  <app-detail-modal [data]="activeModal()" (closed)="closeModal()" />
+</div>

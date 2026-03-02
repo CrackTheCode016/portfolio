@@ -1,0 +1,86 @@
+:host {
+  display: block;
+}
+
+.carousel {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.carousel__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: flex-end;
+}
+
+.carousel__control {
+  border: 1px solid var(--color-border);
+  background: var(--surface-tint-strong);
+}
+
+.carousel-card {
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
+  overflow: hidden;
+}
+
+.carousel-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.carousel-card__tagline {
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.carousel__tabs {
+  display: grid;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.carousel__tabs .mat-mdc-tab-header {
+  margin-bottom: var(--space-2);
+  padding: var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  background: var(--surface-tint);
+}
+
+.carousel__tabs .mat-mdc-tab-label-container {
+  min-width: 0;
+}
+
+.carousel__tabs .mdc-tab {
+  min-width: max-content;
+  min-height: 3rem;
+  margin-right: var(--space-2);
+  border: 1px solid color-mix(in srgb, var(--color-border) 88%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--mat-sys-surface) 86%, transparent);
+}
+
+.carousel__tabs .mdc-tab:last-child {
+  margin-right: 0;
+}
+
+.carousel__tabs .mdc-tab--active {
+  border-color: var(--color-border-strong);
+  background: var(--surface-tint-strong);
+}
+
+@media (max-width: 640px) {
+  .carousel__controls {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+  }
+
+  .carousel-card__actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
