@@ -17,6 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import type { ProjectItem } from '../../data/portfolio-data';
 import { RevealDirective } from '../../directives/reveal.directive';
+import { DEFAULT_GITHUB_PROFILE_URL, projectPrimaryUrl } from '../../utils/project-links';
 import { ProjectMediaComponent } from '../project-media/project-media.component';
 
 const PROJECT_CAROUSEL_INTERVAL_MS = 14000;
@@ -31,7 +32,6 @@ const PROJECT_CAROUSEL_INTERVAL_MS = 14000;
 export class ProjectCarouselComponent {
   private readonly destroyRef = inject(DestroyRef);
   private readonly platformId = inject(PLATFORM_ID);
-  private readonly githubProfileUrl = 'https://github.com/CrackTheCode016';
 
   readonly projects = input.required<readonly ProjectItem[]>();
   readonly projectSelected = output<string>();
@@ -67,6 +67,6 @@ export class ProjectCarouselComponent {
   }
 
   protected projectUrl(project: ProjectItem): string {
-    return project.liveUrl ?? project.repoUrl ?? this.githubProfileUrl;
+    return projectPrimaryUrl(project, DEFAULT_GITHUB_PROFILE_URL);
   }
 }

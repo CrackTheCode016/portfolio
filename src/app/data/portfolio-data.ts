@@ -76,12 +76,12 @@ export const portfolioProfile: PortfolioProfile = {
   name: 'Bader Youssef',
   headline: 'Product-focused fullstack engineer building web apps, mobile products, tooling, and developer education.',
   contact: {
-    email: 'ibnbassem@gmail.com',
+    email: 'ibnbassem786@gmail.com',
     links: [
       { label: 'Website', href: 'https://badery.co' },
       { label: 'GitHub', href: 'https://github.com/CrackTheCode016' },
       { label: 'X', href: 'https://x.com/baderyo_o' },
-      { label: 'Email', href: 'mailto:ibnbassem@gmail.com' },
+      { label: 'Email', href: 'mailto:ibnbassem786@gmail.com' },
     ],
   },
   about: [

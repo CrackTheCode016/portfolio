@@ -1,0 +1,33 @@
+<mat-card class="info-card stack-card" [class.info-card--text]="textOnly()" appearance="outlined" appReveal [revealDelay]="revealDelay()">
+  @if (showMedia()) {
+    <app-project-media
+      [title]="project().name"
+      [category]="project().category"
+      [thumbnails]="project().thumbnails"
+      [variant]="mediaVariant()"
+    />
+  }
+
+  <mat-card-header>
+    <mat-card-subtitle>{{ project().category }}</mat-card-subtitle>
+    <mat-card-title>{{ project().name }}</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p>{{ project().tagline }}</p>
+  </mat-card-content>
+
+  <mat-divider />
+
+  <mat-card-actions align="end" class="card-actions">
+    <a mat-stroked-button class="button--flat" [href]="primaryUrl()" target="_blank" rel="noreferrer">
+      View Project
+    </a>
+    @if (secondaryRepoUrl(); as repoUrl) {
+      <a mat-stroked-button class="button--flat" [href]="repoUrl" target="_blank" rel="noreferrer">
+        GitHub
+      </a>
+    }
+    <button mat-flat-button type="button" class="button--raised" (click)="openDetails()">Open details</button>
+  </mat-card-actions>
+</mat-card>

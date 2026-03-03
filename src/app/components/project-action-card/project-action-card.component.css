@@ -1,0 +1,25 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.info-card {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.info-card p {
+  margin: 0;
+}
+
+.info-card--text .mat-mdc-card-header {
+  padding-top: calc(16px + var(--space-1));
+}
+
+.info-card--text mat-divider {
+  margin-top: var(--space-2);
+}
+
+.info-card--text .card-actions {
+  margin-top: var(--space-1);
+}

@@ -425,10 +425,6 @@ textarea:focus-visible {
   font-weight: 700;
 }
 
-.card-grid > .info-card {
-  height: 100%;
-}
-
 .stack-card {
   display: flex;
   flex-direction: column;
@@ -476,6 +472,7 @@ textarea:focus-visible {
 .skills-grid > *,
 .timeline > * {
   min-width: 0;
+  height: 100%;
 }
 
 .carousel__tabs .mdc-tab {

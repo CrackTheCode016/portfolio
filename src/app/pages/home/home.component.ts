@@ -2,26 +2,25 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
-import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { DetailModalComponent } from '../../components/detail-modal/detail-modal.component';
 import { ExperienceTimelineComponent } from '../../components/experience-timeline/experience-timeline.component';
 import { MediaGridComponent } from '../../components/media-grid/media-grid.component';
+import { PageSectionComponent } from '../../components/page-section/page-section.component';
+import { ProjectActionCardComponent } from '../../components/project-action-card/project-action-card.component';
 import { ProjectCarouselComponent } from '../../components/project-carousel/project-carousel.component';
-import { ProjectMediaComponent } from '../../components/project-media/project-media.component';
-import { SectionHeadingComponent } from '../../components/section-heading/section-heading.component';
 import { SiteHeaderComponent } from '../../components/site-header/site-header.component';
 import { SiteFooterComponent } from '../../components/site-footer/site-footer.component';
 import { SkillsGridComponent } from '../../components/skills-grid/skills-grid.component';
 import {
   portfolioProfile,
-  type ContactLink,
   type DetailModalData,
   type ExperienceItem,
   type ProjectItem,
 } from '../../data/portfolio-data';
 import { RevealDirective } from '../../directives/reveal.directive';
+import { DEFAULT_GITHUB_PROFILE_URL, projectModalLinks } from '../../utils/project-links';
 
 interface HeroTag {
   readonly label: string;
@@ -45,14 +44,13 @@ interface ContactMethod {
     MatButtonModule,
     MatCardModule,
     MatChipsModule,
-    MatDividerModule,
     MatIconModule,
     MatListModule,
     MediaGridComponent,
+    PageSectionComponent,
+    ProjectActionCardComponent,
     ProjectCarouselComponent,
-    ProjectMediaComponent,
     RevealDirective,
-    SectionHeadingComponent,
     SiteHeaderComponent,
     SiteFooterComponent,
     SkillsGridComponent,
@@ -62,7 +60,6 @@ interface ContactMethod {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {
-  private readonly githubProfileUrl = 'https://github.com/CrackTheCode016';
   protected readonly profile = portfolioProfile;
   protected readonly featuredProjects = this.profile.projects.filter((project) => project.spotlight);
   protected readonly additionalProjects = this.profile.projects.filter((project) => !project.spotlight);
@@ -95,7 +92,7 @@ export class HomeComponent {
     {
       label: 'GitHub',
       value: 'CrackTheCode016',
-      href: 'https://github.com/CrackTheCode016',
+      href: DEFAULT_GITHUB_PROFILE_URL,
       icon: 'code',
     },
     {
@@ -115,7 +112,7 @@ export class HomeComponent {
   protected readonly footerLinks = [
     { label: 'Projects', href: '#projects' },
     { label: 'Email', href: `mailto:${this.profile.contact.email}` },
-    { label: 'GitHub', href: 'https://github.com/CrackTheCode016', external: true },
+    { label: 'GitHub', href: DEFAULT_GITHUB_PROFILE_URL, external: true },
   ] as const;
 
   protected openProject(slug: string): void {
@@ -133,7 +130,7 @@ export class HomeComponent {
       summary: project.description,
       details: project.details,
       chips: project.stack,
-      links: this.projectLinks(project),
+      links: projectModalLinks(project),
     });
   }
 
@@ -149,26 +146,5 @@ export class HomeComponent {
 
   protected closeModal(): void {
     this.activeModal.set(null);
-  }
-
-  protected projectUrl(project: ProjectItem): string {
-    return project.liveUrl ?? project.repoUrl ?? this.githubProfileUrl;
-  }
-
-  private projectLinks(project: ProjectItem): readonly ContactLink[] {
-    const links: ContactLink[] = [];
-    if (project.liveUrl) {
-      links.push({ label: 'View Project', href: project.liveUrl });
-
-      if (project.repoUrl) {
-        links.push({ label: 'GitHub', href: project.repoUrl });
-      }
-    } else {
-      links.push({ label: 'View Project', href: project.repoUrl ?? this.githubProfileUrl });
-    }
-    if (project.relatedLinks?.length) {
-      links.push(...project.relatedLinks);
-    }
-    return links;
   }
 }

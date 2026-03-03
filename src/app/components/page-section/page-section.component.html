@@ -1,0 +1,8 @@
+<section class="page-section" [attr.id]="sectionId() || null" [attr.aria-labelledby]="headingId()">
+  <mat-card class="page-section__shell" appearance="outlined">
+    <mat-card-content class="page-section__content">
+      <app-section-heading [headingId]="headingId()" [title]="title()" [description]="description()" />
+      <ng-content />
+    </mat-card-content>
+  </mat-card>
+</section>
