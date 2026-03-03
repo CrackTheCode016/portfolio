@@ -122,7 +122,7 @@
 
           <div class="card-grid">
             @for (project of additionalProjects; track project.slug; let index = $index) {
-              <mat-card class="info-card stack-card" appearance="outlined" appReveal [revealDelay]="index * 110">
+              <mat-card class="info-card info-card--text stack-card" appearance="outlined" appReveal [revealDelay]="index * 110">
                 <mat-card-header>
                   <mat-card-subtitle>{{ project.category }}</mat-card-subtitle>
                   <mat-card-title>{{ project.name }}</mat-card-title>

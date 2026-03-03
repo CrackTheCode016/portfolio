@@ -424,7 +424,7 @@ export const portfolioProfile: PortfolioProfile = {
     {
       slug: 'ondemand-ui',
       name: 'EduChain Dashboard',
-      category: 'Cross-chain interaction and on-demand block creation dashboard',
+      category: 'Blockchain management dashboard',
       tagline: 'A dashboard for cross-chain interaction, operational monitoring, and on-demand block creation.',
       description:
         'Focused on operational UX for cross-chain workflows, block creation flows, and ongoing chain monitoring.',
