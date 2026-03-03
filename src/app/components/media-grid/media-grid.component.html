@@ -4,7 +4,7 @@
   </div>
   <div class="card-grid">
     @for (item of items(); track item.href; let index = $index) {
-      <mat-card class="info-card" appearance="outlined" appReveal [revealDelay]="index * 100">
+      <mat-card class="info-card stack-card" appearance="outlined" appReveal [revealDelay]="index * 100">
         @if (item.thumbnail; as thumbnail) {
           <img class="media-card__image" [src]="thumbnail.src" [alt]="thumbnail.alt" />
         } @else {
@@ -19,6 +19,7 @@
         <mat-card-content>
           <p>{{ item.description }}</p>
         </mat-card-content>
+        <mat-divider />
         <mat-card-actions align="end" class="card-actions">
           <a mat-stroked-button class="button--flat" [href]="item.href" target="_blank" rel="noreferrer">{{ actionLabel() }}</a>
         </mat-card-actions>

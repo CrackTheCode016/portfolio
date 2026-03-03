@@ -1,19 +1,14 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  PLATFORM_ID,
   computed,
-  effect,
-  inject,
   input,
   signal,
 } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import type { ProjectThumbnail } from '../../data/portfolio-data';
 
 type ProjectMediaVariant = 'project' | 'tool';
-const PROJECT_MEDIA_INTERVAL_MS = 6800;
 
 @Component({
   selector: 'app-project-media',
@@ -23,8 +18,6 @@ const PROJECT_MEDIA_INTERVAL_MS = 6800;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectMediaComponent {
-  private readonly platformId = inject(PLATFORM_ID);
-
   readonly title = input.required<string>();
   readonly category = input.required<string>();
   readonly thumbnails = input<readonly ProjectThumbnail[]>();
@@ -75,23 +68,6 @@ export class ProjectMediaComponent {
     return 'Project preview coming soon';
   });
   protected readonly isToolVariant = computed(() => this.variant() === 'tool');
-
-  constructor() {
-    effect((onCleanup) => {
-      const items = this.mediaItems();
-      this.activeIndex.set(0);
-
-      if (!isPlatformBrowser(this.platformId) || this.variant() === 'tool' || items.length < 2) {
-        return;
-      }
-
-      const intervalId = window.setInterval(() => {
-        this.activeIndex.update((index) => (index + 1) % items.length);
-      }, PROJECT_MEDIA_INTERVAL_MS);
-
-      onCleanup(() => window.clearInterval(intervalId));
-    });
-  }
 
   protected selectImage(index: number): void {
     this.activeIndex.set(index);

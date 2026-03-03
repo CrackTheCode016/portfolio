@@ -12,11 +12,11 @@
     class="carousel__tabs"
     [selectedIndex]="carouselIndex()"
     (selectedIndexChange)="selectProject($event)"
-    animationDuration="300ms"
+    animationDuration="220ms"
   >
     @for (project of projects(); track project.slug) {
       <mat-tab [label]="project.name">
-        <mat-card class="carousel-card" appearance="outlined">
+        <mat-card class="carousel-card stack-card" appearance="outlined">
           <app-project-media
             [title]="project.name"
             [category]="project.category"
@@ -35,13 +35,14 @@
               }
             </mat-chip-set>
           </mat-card-content>
+          <mat-divider />
           <mat-card-actions align="end" class="card-actions carousel-card__actions">
-            <a mat-stroked-button class="button--flat" [href]="githubUrl(project)" target="_blank" rel="noreferrer">
-              GitHub
+            <a mat-stroked-button class="button--flat" [href]="projectUrl(project)" target="_blank" rel="noreferrer">
+              View Project
             </a>
-            @if (project.liveUrl) {
-              <a mat-stroked-button class="button--flat" [href]="project.liveUrl" target="_blank" rel="noreferrer">
-                Live site
+            @if (project.liveUrl && project.repoUrl) {
+              <a mat-stroked-button class="button--flat" [href]="project.repoUrl" target="_blank" rel="noreferrer">
+                GitHub
               </a>
             }
             <button mat-flat-button type="button" class="button--raised" (click)="projectSelected.emit(project.slug)">

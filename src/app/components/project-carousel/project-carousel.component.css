@@ -17,19 +17,25 @@
 .carousel__control {
   border: 1px solid var(--color-border);
   background: var(--surface-tint-strong);
+  box-shadow: var(--bubble-shadow-soft);
+}
+
+.carousel__control .mat-icon {
+  color: var(--color-primary);
+  font-size: 1.35rem;
+  width: 1.35rem;
+  height: 1.35rem;
 }
 
 .carousel-card {
-  display: grid;
-  gap: var(--space-3);
   min-width: 0;
   overflow: hidden;
 }
 
-.carousel-card__actions {
+.mat-mdc-card-actions.carousel-card__actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .carousel-card__tagline {
@@ -55,22 +61,41 @@
   min-width: 0;
 }
 
+.carousel__tabs .mat-mdc-tab-labels {
+  gap: var(--space-3);
+}
+
 .carousel__tabs .mdc-tab {
   min-width: max-content;
   min-height: 3rem;
-  margin-right: var(--space-2);
-  border: 1px solid color-mix(in srgb, var(--color-border) 88%, transparent);
+  position: relative;
+  border: 1px solid color-mix(in srgb, var(--color-border-strong) 82%, transparent);
   border-radius: 999px;
   background: color-mix(in srgb, var(--mat-sys-surface) 86%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, white 10%, transparent);
 }
 
-.carousel__tabs .mdc-tab:last-child {
-  margin-right: 0;
+.carousel__tabs .mdc-tab:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 0.7rem;
+  right: calc(var(--space-3) * -0.5);
+  width: 1px;
+  height: calc(100% - 1.4rem);
+  background: color-mix(in srgb, var(--color-border-strong) 78%, transparent);
 }
 
 .carousel__tabs .mdc-tab--active {
   border-color: var(--color-border-strong);
   background: var(--surface-tint-strong);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, white 14%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--color-accent) 16%, transparent),
+    0 0 22px color-mix(in srgb, var(--color-accent) 12%, transparent);
+}
+
+:root[data-theme='dark'] .carousel__control .mat-icon {
+  color: #fff;
 }
 
 @media (max-width: 640px) {
@@ -79,8 +104,13 @@
     flex-wrap: nowrap;
   }
 
+  .carousel__tabs .mat-mdc-tab-labels {
+    gap: var(--space-2);
+  }
+
   .carousel-card__actions {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
   }
 }

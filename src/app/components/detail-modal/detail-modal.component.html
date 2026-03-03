@@ -8,7 +8,7 @@
       [attr.aria-label]="modal.title"
       (click)="$event.stopPropagation()"
     >
-      <mat-card-header class="detail-modal__header">
+      <div class="detail-modal__header">
         <div class="detail-modal__heading">
           <p class="eyebrow">{{ modal.eyebrow }}</p>
           <mat-card-title>{{ modal.title }}</mat-card-title>
@@ -17,7 +17,7 @@
           }
         </div>
         <button mat-stroked-button type="button" class="button--flat" (click)="close()">Close</button>
-      </mat-card-header>
+      </div>
 
       <mat-card-content>
         <p class="detail-modal__summary">{{ modal.summary }}</p>

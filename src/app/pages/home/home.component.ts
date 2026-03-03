@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { DetailModalComponent } from '../../components/detail-modal/detail-modal.component';
@@ -44,6 +45,7 @@ interface ContactMethod {
     MatButtonModule,
     MatCardModule,
     MatChipsModule,
+    MatDividerModule,
     MatIconModule,
     MatListModule,
     MediaGridComponent,
@@ -112,7 +114,7 @@ export class HomeComponent {
   ] as const;
   protected readonly footerLinks = [
     { label: 'Projects', href: '#projects' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Email', href: `mailto:${this.profile.contact.email}` },
     { label: 'GitHub', href: 'https://github.com/CrackTheCode016', external: true },
   ] as const;
 
@@ -149,19 +151,20 @@ export class HomeComponent {
     this.activeModal.set(null);
   }
 
-  protected githubUrl(project: ProjectItem): string {
-    return project.repoUrl ?? this.githubProfileUrl;
+  protected projectUrl(project: ProjectItem): string {
+    return project.liveUrl ?? project.repoUrl ?? this.githubProfileUrl;
   }
 
   private projectLinks(project: ProjectItem): readonly ContactLink[] {
     const links: ContactLink[] = [];
     if (project.liveUrl) {
-      links.push({ label: 'Live site', href: project.liveUrl });
-    }
-    if (project.repoUrl) {
-      links.push({ label: 'GitHub repo', href: project.repoUrl });
+      links.push({ label: 'View Project', href: project.liveUrl });
+
+      if (project.repoUrl) {
+        links.push({ label: 'GitHub', href: project.repoUrl });
+      }
     } else {
-      links.push({ label: 'GitHub profile', href: this.githubProfileUrl });
+      links.push({ label: 'View Project', href: project.repoUrl ?? this.githubProfileUrl });
     }
     if (project.relatedLinks?.length) {
       links.push(...project.relatedLinks);

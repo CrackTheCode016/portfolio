@@ -29,6 +29,7 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 1rem;
+  margin-bottom: var(--space-4);
 }
 
 .detail-modal__heading {
@@ -36,7 +37,7 @@
   gap: 0.2rem;
 }
 
-.detail-modal__header h2,
+.detail-modal__heading .mat-mdc-card-title,
 .detail-modal__subtitle,
 .detail-modal__summary,
 .detail-modal__list {
@@ -48,7 +49,7 @@
 }
 
 .detail-modal__summary {
-  margin-top: 1rem;
+  margin-top: 0;
 }
 
 .detail-modal__list {
@@ -57,8 +58,8 @@
 }
 
 .detail-modal__actions {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 0.75rem;
   margin-top: 1rem;
 }

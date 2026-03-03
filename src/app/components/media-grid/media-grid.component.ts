@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 import { RevealDirective } from '../../directives/reveal.directive';
 import type { MediaItem } from '../../data/portfolio-data';
 
 @Component({
   selector: 'app-media-grid',
-  imports: [MatButtonModule, MatCardModule, RevealDirective],
+  imports: [MatButtonModule, MatCardModule, MatDividerModule, RevealDirective],
   templateUrl: './media-grid.component.html',
   styleUrl: './media-grid.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

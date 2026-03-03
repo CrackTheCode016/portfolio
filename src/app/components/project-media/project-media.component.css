@@ -21,7 +21,7 @@
 .project-media__track {
   display: flex;
   height: 100%;
-  transition: transform 420ms ease;
+  transition: transform 240ms ease-out;
 }
 
 .project-media__image {
@@ -81,21 +81,18 @@
 }
 
 .project-media__tool-canvas {
-  display: grid;
-  grid-template-columns: auto 1fr;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-3);
-  width: min(100%, 18rem);
-  padding: var(--space-3);
+  min-width: 12rem;
+  padding: var(--space-3) var(--space-4);
   border: 1px solid color-mix(in srgb, var(--color-border-strong) 78%, white);
   border-radius: 1.25rem;
-  background:
-    linear-gradient(180deg, color-mix(in srgb, var(--surface-tint-strong) 82%, white), var(--bubble-surface)),
-    linear-gradient(145deg, var(--media-gradient-start), rgba(149, 198, 35, 0.08));
+  background: color-mix(in srgb, var(--surface-tint-strong) 78%, white);
   box-shadow: inset 0 1px 0 color-mix(in srgb, white 20%, transparent);
 }
 
-.project-media__tool-badge,
 .project-media__badge {
   display: grid;
   place-items: center;
@@ -114,6 +111,10 @@
   opacity: 0.58;
 }
 
+.project-media__tool-icon {
+  color: color-mix(in srgb, var(--color-primary) 82%, white);
+}
+
 .project-media__tool-monogram,
 .project-media__monogram {
   display: grid;
@@ -130,31 +131,6 @@
   letter-spacing: 0.08em;
 }
 
-.project-media__tool-lines {
-  grid-column: 1 / -1;
-  display: grid;
-  gap: 0.5rem;
-}
-
-.project-media__tool-lines span {
-  display: block;
-  height: 0.45rem;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--color-primary) 18%, white);
-}
-
-.project-media__tool-lines span:nth-child(1) {
-  width: 100%;
-}
-
-.project-media__tool-lines span:nth-child(2) {
-  width: 78%;
-}
-
-.project-media__tool-lines span:nth-child(3) {
-  width: 56%;
-}
-
 .project-media__message {
   margin: 0;
   max-width: 14rem;
@@ -166,6 +142,11 @@
   .project-media__gallery,
   .project-media__placeholder {
     aspect-ratio: 16 / 9;
+  }
+
+  .project-media__tool-canvas {
+    min-width: 0;
+    width: 100%;
   }
 
   .project-media__indicators {

@@ -84,16 +84,17 @@
   background:
     radial-gradient(circle at 18% 24%, color-mix(in srgb, var(--color-accent) 15%, transparent) 0%, transparent 32%),
     radial-gradient(circle at 76% 20%, color-mix(in srgb, var(--color-primary) 12%, transparent) 0%, transparent 30%),
-    radial-gradient(circle at 58% 72%, color-mix(in srgb, var(--color-accent) 10%, transparent) 0%, transparent 28%);
-  opacity: 0.2;
-  animation: background-ripple-one 42s ease-in-out infinite alternate;
+    radial-gradient(circle at 58% 72%, color-mix(in srgb, var(--color-accent) 10%, transparent) 0%, transparent 28%),
+    radial-gradient(circle at 24% 92%, color-mix(in srgb, var(--color-accent) 12%, transparent) 0%, transparent 24%);
+  opacity: 0.18;
 }
 
 .site-shell__background::after {
   background:
     radial-gradient(circle at 68% 36%, color-mix(in srgb, var(--color-accent) 8%, transparent) 0%, transparent 30%),
-    radial-gradient(circle at 28% 68%, color-mix(in srgb, var(--color-primary) 8%, transparent) 0%, transparent 30%);
-  opacity: 0.12;
+    radial-gradient(circle at 28% 68%, color-mix(in srgb, var(--color-primary) 8%, transparent) 0%, transparent 30%),
+    radial-gradient(circle at 76% 96%, color-mix(in srgb, var(--color-primary) 10%, transparent) 0%, transparent 24%);
+  opacity: 0.1;
 }
 
 .site-shell__grid {
@@ -150,20 +151,6 @@
   opacity: 0.14;
 }
 
-@keyframes background-ripple-one {
-  0% {
-    transform: translate3d(-1.5%, -1%, 0) scale(1);
-  }
-
-  50% {
-    transform: translate3d(1.5%, 1.25%, 0) scale(1.03);
-  }
-
-  100% {
-    transform: translate3d(-0.75%, 1.5%, 0) scale(1.015);
-  }
-}
-
 .eyebrow {
   margin: 0;
   color: var(--color-accent);
@@ -195,8 +182,6 @@ h1 {
 }
 
 .info-card {
-  display: grid;
-  gap: var(--space-3);
   min-width: 0;
   overflow: hidden;
 }
@@ -245,17 +230,5 @@ h1 {
   .hero-bubble .mat-mdc-card-content,
   .section-shell .mat-mdc-card-content {
     padding: var(--space-4) !important;
-  }
-}
-
-@media (max-width: 900px) {
-  .site-shell__background::before {
-    animation: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .site-shell__background::before {
-    animation: none;
   }
 }

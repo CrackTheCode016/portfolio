@@ -78,7 +78,7 @@
 
           <div class="card-grid">
             @for (tool of profile.tooling; track tool.slug; let index = $index) {
-              <mat-card class="info-card" appearance="outlined" appReveal [revealDelay]="index * 110">
+              <mat-card class="info-card stack-card" appearance="outlined" appReveal [revealDelay]="index * 110">
                 <app-project-media
                   [title]="tool.name"
                   [category]="tool.category"
@@ -92,13 +92,14 @@
                 <mat-card-content>
                   <p>{{ tool.tagline }}</p>
                 </mat-card-content>
+                <mat-divider />
                 <mat-card-actions align="end" class="card-actions">
-                  <a mat-stroked-button class="button--flat" [href]="githubUrl(tool)" target="_blank" rel="noreferrer">
-                    GitHub
+                  <a mat-stroked-button class="button--flat" [href]="projectUrl(tool)" target="_blank" rel="noreferrer">
+                    View Project
                   </a>
-                  @if (tool.liveUrl) {
-                    <a mat-stroked-button class="button--flat" [href]="tool.liveUrl" target="_blank" rel="noreferrer">
-                      Live site
+                  @if (tool.liveUrl && tool.repoUrl) {
+                    <a mat-stroked-button class="button--flat" [href]="tool.repoUrl" target="_blank" rel="noreferrer">
+                      GitHub
                     </a>
                   }
                   <button mat-flat-button type="button" class="button--raised" (click)="openProjectModal(tool)">Open details</button>
@@ -121,7 +122,7 @@
 
           <div class="card-grid">
             @for (project of additionalProjects; track project.slug; let index = $index) {
-              <mat-card class="info-card" appearance="outlined" appReveal [revealDelay]="index * 110">
+              <mat-card class="info-card stack-card" appearance="outlined" appReveal [revealDelay]="index * 110">
                 <mat-card-header>
                   <mat-card-subtitle>{{ project.category }}</mat-card-subtitle>
                   <mat-card-title>{{ project.name }}</mat-card-title>
@@ -129,13 +130,14 @@
                 <mat-card-content>
                   <p>{{ project.tagline }}</p>
                 </mat-card-content>
+                <mat-divider />
                 <mat-card-actions align="end" class="card-actions">
-                  <a mat-stroked-button class="button--flat" [href]="githubUrl(project)" target="_blank" rel="noreferrer">
-                    GitHub
+                  <a mat-stroked-button class="button--flat" [href]="projectUrl(project)" target="_blank" rel="noreferrer">
+                    View Project
                   </a>
-                  @if (project.liveUrl) {
-                    <a mat-stroked-button class="button--flat" [href]="project.liveUrl" target="_blank" rel="noreferrer">
-                      Live site
+                  @if (project.liveUrl && project.repoUrl) {
+                    <a mat-stroked-button class="button--flat" [href]="project.repoUrl" target="_blank" rel="noreferrer">
+                      GitHub
                     </a>
                   }
                   <button mat-flat-button type="button" class="button--raised" (click)="openProjectModal(project)">Open details</button>

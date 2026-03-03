@@ -8,21 +8,22 @@ import {
   output,
   signal,
 } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
-import { isPlatformBrowser } from '@angular/common';
 import type { ProjectItem } from '../../data/portfolio-data';
 import { RevealDirective } from '../../directives/reveal.directive';
 import { ProjectMediaComponent } from '../project-media/project-media.component';
 
-const PROJECT_CAROUSEL_INTERVAL_MS = 8200;
+const PROJECT_CAROUSEL_INTERVAL_MS = 14000;
 
 @Component({
   selector: 'app-project-carousel',
-  imports: [MatButtonModule, MatCardModule, MatChipsModule, MatIconModule, MatTabsModule, ProjectMediaComponent, RevealDirective],
+  imports: [MatButtonModule, MatCardModule, MatChipsModule, MatDividerModule, MatIconModule, MatTabsModule, ProjectMediaComponent, RevealDirective],
   templateUrl: './project-carousel.component.html',
   styleUrl: './project-carousel.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -65,7 +66,7 @@ export class ProjectCarouselComponent {
     this.carouselIndex.set(index);
   }
 
-  protected githubUrl(project: ProjectItem): string {
-    return project.repoUrl ?? this.githubProfileUrl;
+  protected projectUrl(project: ProjectItem): string {
+    return project.liveUrl ?? project.repoUrl ?? this.githubProfileUrl;
   }
 }

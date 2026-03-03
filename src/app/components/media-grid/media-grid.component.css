@@ -50,21 +50,9 @@
 }
 
 .media-group .info-card {
-  display: grid;
-  grid-template-rows: auto auto minmax(0, 1fr) auto;
   min-width: 0;
   overflow: hidden;
   height: 100%;
-}
-
-.media-group .info-card .mat-mdc-card-content {
-  align-content: start;
-}
-
-.media-group .info-card .mat-mdc-card-actions {
-  margin-top: auto;
-  padding: 0 var(--space-4) var(--space-4);
-  justify-content: flex-end;
 }
 
 @media (max-width: 640px) {

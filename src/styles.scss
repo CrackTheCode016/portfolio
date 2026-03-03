@@ -101,6 +101,8 @@ $portfolio-theme: mat.define-theme((
   --page-gradient:
     radial-gradient(circle at top left, rgba(149, 198, 35, 0.16), transparent 28%),
     radial-gradient(circle at top right, rgba(14, 71, 73, 0.09), transparent 22%),
+    radial-gradient(circle at bottom left, rgba(149, 198, 35, 0.12), transparent 24%),
+    radial-gradient(circle at bottom right, rgba(14, 71, 73, 0.08), transparent 22%),
     linear-gradient(180deg, #efe7da 0%, #f7f2e9 58%, #f3ede3 100%);
 
   --mat-sys-primary: #0e4749;
@@ -184,6 +186,8 @@ $portfolio-theme: mat.define-theme((
   --page-gradient:
     radial-gradient(circle at top left, rgba(149, 198, 35, 0.1), transparent 28%),
     radial-gradient(circle at top right, rgba(14, 71, 73, 0.12), transparent 22%),
+    radial-gradient(circle at bottom left, rgba(149, 198, 35, 0.08), transparent 24%),
+    radial-gradient(circle at bottom right, rgba(14, 71, 73, 0.16), transparent 22%),
     linear-gradient(180deg, #081414 0%, #0b1b1b 55%, #091414 100%);
 
   --mat-sys-primary: #95c623;
@@ -410,6 +414,7 @@ textarea:focus-visible {
 
 .mat-mdc-card-header-text {
   min-width: 0;
+  margin: 0 !important;
 }
 
 .mat-mdc-card-header {
@@ -426,17 +431,60 @@ textarea:focus-visible {
   font-weight: 700;
 }
 
+.card-grid > .info-card,
+.card-grid > .carousel-card {
+  height: 100%;
+}
+
+.stack-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.stack-card .mat-mdc-card-header {
+  min-height: 5.25rem;
+  padding: var(--space-4) var(--space-4) 0;
+}
+
+.stack-card .mat-mdc-card-content {
+  flex: 1 1 auto;
+  padding: var(--space-1) var(--space-4) 0;
+}
+
 .card-grid {
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
 }
 
-.card-actions {
+.stack-card mat-divider {
+  margin: var(--space-2) var(--space-4) 0;
+}
+
+.mat-mdc-card-actions.card-actions {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
   gap: var(--space-2);
-  justify-content: flex-end;
-  margin-top: auto;
-  padding: 0 var(--space-4) var(--space-4) !important;
+  margin-top: 0;
+  padding: var(--space-3) var(--space-4) var(--space-4) !important;
+}
+
+.card-actions {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.mat-mdc-card-actions.card-actions > .mat-mdc-button-base,
+.detail-modal__actions > .mat-mdc-button-base {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+
+.card-actions .mdc-button__label,
+.detail-modal__actions .mdc-button__label {
+  white-space: normal;
 }
 
 .skills-grid {
@@ -464,7 +512,7 @@ textarea:focus-visible {
 
 .carousel__tabs .mdc-tab {
   min-width: 0;
-  padding-inline: 0.1rem;
+  padding-inline: 0.35rem;
 }
 
 .carousel__tabs .mdc-tab__text-label {
@@ -481,16 +529,16 @@ textarea:focus-visible {
 
 .reveal {
   opacity: 0;
-  transform: translateY(1.2rem) scale(0.985);
+  transform: translateY(0.7rem);
   transition:
-    opacity 380ms ease,
-    transform 560ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    opacity 220ms ease-out,
+    transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
   transition-delay: 0ms;
 }
 
 .reveal--visible {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
   transition-delay: var(--reveal-delay, 0ms);
 }
 
@@ -516,5 +564,11 @@ textarea:focus-visible {
   .mat-mdc-tab .mdc-tab__text-label {
     white-space: normal;
     text-align: center;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
