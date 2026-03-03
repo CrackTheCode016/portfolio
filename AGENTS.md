@@ -14,6 +14,12 @@ This repository is an Angular (v20+) TypeScript application. You must follow the
 - Code chunks may include inline line numbers in the form `L123:content`. Treat the `L123:` prefix as metadata, not part of the code.
 - Default expectation: deliver working code, not just a plan. If details are missing, make reasonable assumptions and complete a usable implementation.
 
+## Relationship To Skills
+
+- Treat this `AGENTS.md` file as repo-specific guidance and the `angular-material-ui-ux` skill as reusable cross-project guidance.
+- When both apply, use the skill for general Angular Material and UI/UX workflow, and use this file for this repository's structure, visual language, content strategy, and refactoring preferences.
+- If there is tension between generic skill advice and this repository's established patterns, prefer this repository's patterns unless the user asks to change direction.
+
 ---
 
 ## Project Assumptions
@@ -52,6 +58,7 @@ This repository is an Angular (v20+) TypeScript application. You must follow the
 - Follow repo naming, formatting, localization, testing, and structural conventions.
 - Keep changes cohesive. Read enough context first, then make deliberate edits instead of repeated micro-edits.
 - Reuse existing helpers and abstractions before adding new ones.
+- Refactor for readability before adding more polish when templates or styles are getting hard to reason about.
 - Preserve type safety. Avoid `any`, unnecessary casts, and success-shaped fallbacks that hide real failures.
 - Do not add broad `try/catch` blocks or silent early returns unless the project already uses that pattern intentionally and consistently.
 
@@ -102,6 +109,45 @@ This repository is an Angular (v20+) TypeScript application. You must follow the
 - Ensure the app works on mobile and desktop.
 - Finish the requested scope to a runnable, testable state rather than leaving disconnected pieces.
 
+## This Repo's Visual System
+
+- Default to the existing warm portfolio direction in this repo unless the user asks for a different one:
+  - warm sand or parchment surfaces
+  - deep teal ink
+  - a sharp lime-green accent
+  - large rounded outlined section shells
+  - subtle grid and radial-gradient atmosphere
+  - restrained depth instead of heavy glass or blur
+- Keep the page feeling calm and technical rather than loud, glossy, or startup-generic.
+- Prefer concise browseable cards with detail moved into dialogs or other progressive-disclosure patterns instead of making every card dense.
+- Favor outlined tabs, chips, and buttons over filling large parts of the UI with accent color.
+- In dark mode, increase control contrast deliberately. Icons and navigation controls should stay crisp and obvious, especially on carousels and tabbed browsing.
+- Avoid hover zoom as a default treatment for cards in this repo.
+
+## This Repo's Composition Patterns
+
+- Reuse the shared section-shell pattern for major home-page sections instead of repeating page-level `section > mat-card > mat-card-content` scaffolding.
+- Reuse shared card components for repeated project-style cards instead of duplicating Material card markup across page templates.
+- Keep card action behavior consistent:
+  - `View Project` points to the live product when present, otherwise the repository
+  - show a separate `GitHub` button only when both live and repo links exist
+  - stack card actions vertically and make them full width when card widths vary
+- Centralize project link and modal-link logic in typed helpers rather than reproducing URL logic in templates or page components.
+- Use section and card templates that read like content composition, not low-level Material plumbing.
+
+## This Repo's Styling Rules
+
+- Prefer native Angular Material spacing inside cards first.
+- If container-card padding must be customized, target direct children only so nested cards are not affected.
+- Avoid broad selectors that style `.mat-mdc-card-content` or other MDC internals across nested content trees.
+- Keep custom CSS focused on page shell layout, card/media composition, gradients, and brand polish.
+- Remove dead selectors, abandoned variants, and temporary overrides as part of UI refactors.
+- Keep motion restrained and cheap:
+  - subtle reveal is acceptable
+  - ambient background treatment is acceptable if low-cost
+  - avoid many continuously animated card surfaces
+  - if the page feels laggy, reduce motion cost before adding more animation
+
 ---
 
 ## Presenting Work
@@ -141,6 +187,7 @@ You are an expert in TypeScript, Angular, Angular Material, and scalable web app
 ## Angular Material
 
 - Use Angular Material for interactive controls and surfaces such as buttons, inputs, selects, menus, dialogs, snack bars, lists, tabs, toolbars, cards, chips, and tables unless the project has a documented alternative.
+- Use the latest Angular Material docs at `https://material.angular.dev/` as the primary reference unless the user explicitly asks for a legacy version.
 - Prefer Material 3 theming and token-driven styling over hardcoded component colors.
 - Map app colors and typography through the global theme before adding one-off overrides.
 - Keep custom CSS focused on layout, composition, and brand polish rather than reimplementing Material behavior.
@@ -286,4 +333,7 @@ export class ExampleComponent {
 - https://angular.dev/guide/templates/pipes
 - https://angular.dev/guide/forms/reactive-forms
 - https://material.angular.dev/
+- https://material.angular.dev/components/categories
+- https://material.angular.dev/guide/theming
+- https://material.angular.dev/guide/theming-your-components
 - https://www.w3.org/WAI/WCAG22/quickref/
