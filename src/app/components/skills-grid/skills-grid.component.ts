@@ -67,6 +67,8 @@ export class SkillsGridComponent {
     }
 
     if (
+      normalized.includes('stripe') ||
+      normalized.includes('payment') ||
       normalized.includes('api') ||
       normalized.includes('rss') ||
       normalized.includes('sync') ||

@@ -60,23 +60,24 @@ interface ContactMethod {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {
+  protected readonly bookingUrl = 'https://calendly.com/d/cxjw-8v3-j6w';
   protected readonly profile = portfolioProfile;
   protected readonly featuredProjects = this.profile.projects.filter((project) => project.spotlight);
   protected readonly additionalProjects = this.profile.projects.filter((project) => !project.spotlight);
   protected readonly heroTags: readonly HeroTag[] = [
-    { label: 'Angular', background: 'var(--tone-angular-bg)', foreground: 'var(--tone-angular-fg)', outline: 'var(--tone-angular-outline)' },
-    { label: 'TypeScript', background: 'var(--tone-ts-bg)', foreground: 'var(--tone-ts-fg)', outline: 'var(--tone-ts-outline)' },
-    { label: 'Rust', background: 'var(--tone-rust-bg)', foreground: 'var(--tone-rust-fg)', outline: 'var(--tone-rust-outline)' },
-    { label: 'Ionic', background: 'var(--tone-angular-bg)', foreground: 'var(--tone-angular-fg)', outline: 'var(--tone-angular-outline)' },
-    { label: 'Firebase', background: 'var(--tone-firebase-bg)', foreground: 'var(--tone-firebase-fg)', outline: 'var(--tone-firebase-outline)' },
-    { label: 'Vue', background: 'var(--tone-vue-bg)', foreground: 'var(--tone-vue-fg)', outline: 'var(--tone-vue-outline)' },
-    { label: 'Polkadot SDK', background: 'var(--tone-web3-bg)', foreground: 'var(--tone-web3-fg)', outline: 'var(--tone-web3-outline)' },
-    { label: 'Substrate', background: 'var(--tone-web3-bg)', foreground: 'var(--tone-web3-fg)', outline: 'var(--tone-web3-outline)' },
-    { label: 'APIs', background: 'var(--tone-api-bg)', foreground: 'var(--tone-api-fg)', outline: 'var(--tone-api-outline)' },
+    { label: 'Fullstack Development', background: 'var(--tone-angular-bg)', foreground: 'var(--tone-angular-fg)', outline: 'var(--tone-angular-outline)' },
+    { label: 'Hybrid Mobile Apps', background: 'var(--tone-ts-bg)', foreground: 'var(--tone-ts-fg)', outline: 'var(--tone-ts-outline)' },
+    { label: 'Web3', background: 'var(--tone-rust-bg)', foreground: 'var(--tone-rust-fg)', outline: 'var(--tone-rust-outline)' },
     { label: 'Developer Education', background: 'var(--tone-docs-bg)', foreground: 'var(--tone-docs-fg)', outline: 'var(--tone-docs-outline)' },
   ];
   protected readonly activeModal = signal<DetailModalData | null>(null);
   protected readonly contactMethods: readonly ContactMethod[] = [
+    {
+      label: 'Calendly',
+      value: 'Book an appointment',
+      href: this.bookingUrl,
+      icon: 'calendar_month',
+    },
     {
       label: 'Email',
       value: this.profile.contact.email,

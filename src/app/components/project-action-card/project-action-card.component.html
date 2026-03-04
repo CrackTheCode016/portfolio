@@ -20,9 +20,11 @@
   <mat-divider />
 
   <mat-card-actions align="end" class="card-actions">
-    <a mat-stroked-button class="button--flat" [href]="primaryUrl()" target="_blank" rel="noreferrer">
-      View Project
-    </a>
+    @if (primaryUrl(); as primaryUrl) {
+      <a mat-stroked-button class="button--flat" [href]="primaryUrl" target="_blank" rel="noreferrer">
+        View Project
+      </a>
+    }
     @if (secondaryRepoUrl(); as repoUrl) {
       <a mat-stroked-button class="button--flat" [href]="repoUrl" target="_blank" rel="noreferrer">
         GitHub

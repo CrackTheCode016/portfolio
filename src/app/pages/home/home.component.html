@@ -13,7 +13,7 @@
     <section class="hero__content">
       <mat-card class="hero-bubble" appearance="outlined" appReveal>
         <mat-card-content class="hero__copy">
-          <p class="eyebrow">Portfolio</p>
+          <p class="eyebrow">From Idea to Product</p>
           <h1>{{ profile.name }}</h1>
           <p class="headline">{{ profile.headline }}</p>
           <mat-chip-set class="hero__tags">
@@ -33,7 +33,9 @@
           </mat-chip-set>
           <div class="hero__actions">
             <a mat-flat-button class="button--raised" href="#projects">View projects</a>
-            <a mat-stroked-button class="button--flat" href="#contact">Contact</a>
+            <a mat-stroked-button class="button--flat" [href]="bookingUrl" target="_blank" rel="noreferrer">
+              Book an appointment
+            </a>
           </div>
         </mat-card-content>
       </mat-card>
@@ -60,8 +62,8 @@
 
     <app-page-section
       headingId="tooling-title"
-      title="Tooling"
-      description="Templates, dashboards, and workflow tools built for real use."
+      title="Tooling & Templates"
+      description="Templates, dashboards, and custom workflow tools mostly focused towards developers and system administrators, find a few examples below:"
     >
       <div class="card-grid">
         @for (tool of profile.tooling; track tool.slug; let index = $index) {
@@ -118,12 +120,12 @@
     <app-page-section
       sectionId="contact"
       headingId="contact-title"
-      title="Contact"
-      description="Product work, tooling, docs, or workshops."
+      title="Book an appointment"
+      description="Have an idea you want to bring to life? Book an appointment with me."
     >
       <p class="contact-intro" appReveal>
         If you are working on a product, internal tool, developer platform, course, or documentation effort,
-        send a note with a little context about the work and where you need help.
+        book time with me directly and we can map out what needs to get built.
       </p>
 
       <mat-nav-list class="contact-points" aria-label="Contact methods" appReveal [revealDelay]="80">

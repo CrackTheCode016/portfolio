@@ -4,9 +4,8 @@ export const DEFAULT_GITHUB_PROFILE_URL = 'https://github.com/CrackTheCode016';
 
 export function projectPrimaryUrl(
   project: Pick<ProjectItem, 'liveUrl' | 'repoUrl'>,
-  fallbackUrl = DEFAULT_GITHUB_PROFILE_URL,
-): string {
-  return project.liveUrl ?? project.repoUrl ?? fallbackUrl;
+): string | null {
+  return project.liveUrl ?? project.repoUrl ?? null;
 }
 
 export function projectSecondaryRepoUrl(project: Pick<ProjectItem, 'liveUrl' | 'repoUrl'>): string | null {
@@ -15,7 +14,6 @@ export function projectSecondaryRepoUrl(project: Pick<ProjectItem, 'liveUrl' | '
 
 export function projectModalLinks(
   project: Pick<ProjectItem, 'liveUrl' | 'repoUrl' | 'relatedLinks'>,
-  fallbackUrl = DEFAULT_GITHUB_PROFILE_URL,
 ): readonly ContactLink[] {
   const links: ContactLink[] = [];
 
@@ -25,8 +23,8 @@ export function projectModalLinks(
     if (project.repoUrl) {
       links.push({ label: 'GitHub', href: project.repoUrl });
     }
-  } else {
-    links.push({ label: 'View Project', href: project.repoUrl ?? fallbackUrl });
+  } else if (project.repoUrl) {
+    links.push({ label: 'View Project', href: project.repoUrl });
   }
 
   if (project.relatedLinks?.length) {

@@ -182,6 +182,28 @@ export const portfolioProfile: PortfolioProfile = {
       spotlight: true,
     },
     {
+      slug: 'kasb-form',
+      name: 'Kasb Form',
+      category: 'Custom donation checkout (Nonprofit)',
+      tagline: 'A Stripe-based donation flow built for fast fundraising, recurring giving, and clean donor records.',
+      description:
+        'Built as a production donation form for nonprofit fundraising with a strong focus on reliability, speed, and the donor data teams actually need.',
+      details: [
+        'Built a custom Stripe-based donation form for nonprofit fundraising workflows.',
+        'Supports both one-time and recurring donations in a streamlined checkout flow.',
+        'Designed for real fundraising events where speed, reliability, and low-friction completion matter.',
+        'Captures the donor details nonprofits need for records, reporting, and follow-up.',
+      ],
+      stack: ['Stripe', 'Payments', 'Donation checkout', 'Recurring giving', 'Donor data capture', 'Nonprofit UX'],
+      thumbnails: [
+        {
+          src: '/imgs/kasb_form.png',
+          alt: 'Kasb Form donation checkout screenshot.',
+        },
+      ],
+      spotlight: true,
+    },
+    {
       slug: 'educhain',
       name: 'EduChain',
       category: 'Education-Focused Chain',
@@ -395,19 +417,19 @@ export const portfolioProfile: PortfolioProfile = {
       stack: ['Rust', 'Subxt', 'Template authoring'],
       repoUrl: 'https://github.com/CrackTheCode016/subxt-starter',
     },
-    {
-      slug: 'edunews-subxt',
-      name: 'edunews-subxt',
-      category: 'Rust CLI demo',
-      tagline: 'A CLI demonstration for multi-chain patterns using Subxt.',
-      description:
-        'Built to teach practical multi-chain patterns through a concise developer-facing example.',
-      details: [
-        'Rust CLI demo for multi-chain patterns using Subxt.',
-      ],
-      stack: ['Rust', 'CLI', 'Subxt'],
-      repoUrl: 'https://github.com/w3f/edunews-subxt',
-    },
+    // {
+    //   slug: 'edunews-subxt',
+    //   name: 'edunews-subxt',
+    //   category: 'Rust CLI demo',
+    //   tagline: 'A CLI demonstration for multi-chain patterns using Subxt.',
+    //   description:
+    //     'Built to teach practical multi-chain patterns through a concise developer-facing example.',
+    //   details: [
+    //     'Rust CLI demo for multi-chain patterns using Subxt.',
+    //   ],
+    //   stack: ['Rust', 'CLI', 'Subxt'],
+    //   repoUrl: 'https://github.com/w3f/edunews-subxt',
+    // },
     {
       slug: 'ondemand',
       name: 'ondemand',
@@ -435,19 +457,6 @@ export const portfolioProfile: PortfolioProfile = {
       repoUrl: 'https://github.com/CrackTheCode016/ondemand-ui',
     },
     {
-      slug: 'intro-to-rust-workshop',
-      name: 'intro-to-rust-workshop',
-      category: 'Workshop repo and curriculum',
-      tagline: 'A beginner-friendly Rust workshop and teaching repository.',
-      description:
-        'Created to make Rust approachable through structured curriculum and practical examples.',
-      details: [
-        'Beginner-friendly Rust workshop repository and curriculum.',
-      ],
-      stack: ['Rust', 'Workshop design', 'Curriculum'],
-      repoUrl: 'https://github.com/CrackTheCode016/intro-to-rust-workshop',
-    },
-    {
       slug: 'flipper-pvm',
       name: 'flipper-pvm',
       category: 'Educational template/example',
@@ -459,22 +468,6 @@ export const portfolioProfile: PortfolioProfile = {
       ],
       repoUrl: 'https://github.com/CrackTheCode016/flipper-pvm',
       stack: ['Rust', 'PolkaVM', 'Template authoring'],
-    },
-    {
-      slug: 'polkadot-wiki-docs',
-      name: 'Polkadot Wiki / Docs',
-      category: 'Documentation authoring and modernization',
-      tagline: 'Documentation authoring and migration work across major Polkadot resources.',
-      description:
-        'Modernized documentation systems and authored practical material for builders.',
-      details: [
-        'Documentation authoring and migration and modernization work moving from Docusaurus to MkDocs.',
-      ],
-      stack: ['Technical writing', 'MkDocs', 'Docusaurus', 'Information architecture'],
-      repoUrl: 'https://github.com/w3f/polkadot-wiki',
-      relatedLinks: [
-        { label: 'W3F education repo', href: 'https://github.com/w3f/w3f-education' },
-      ],
     },
   ],
   talks: [
@@ -574,19 +567,19 @@ export const portfolioProfile: PortfolioProfile = {
   skills: [
     {
       title: 'Languages',
-      items: ['Rust', 'TypeScript/JavaScript', 'Python', 'Bash/Shell', 'Solidity', 'Swift', 'Java', 'C++'],
+      items: ['Rust', 'TypeScript/JavaScript', 'Python', 'Bash/Shell', 'Solidity', 'Swift'],
     },
     {
       title: 'Frontend & Mobile',
-      items: ['Angular', 'Ionic', 'Capacitor', 'Vue', 'PWA development', 'Angular Material', 'Taiga UI', 'Custom UI components'],
+      items: ['Angular', 'Ionic', 'Capacitor', 'Vue', 'PWA Development', 'Angular Material', 'Custom UI components'],
     },
     {
       title: 'Backend / Services / Integrations',
-      items: ['Firebase', 'Serverless functions', 'REST APIs', 'RSS ingestion', 'Scheduled sync jobs', 'Caching & indexing strategies'],
+      items: ['Firebase / Similar', 'Web3 Architecture', "Blockchain Development", 'Stripe / Payments', 'Serverless functions', 'REST APIs', 'RSS ingestion', 'Scheduled sync jobs', 'Caching & indexing strategies'],
     },
     {
       title: 'Developer Tooling / Docs / Enablement',
-      items: ['Git/GitHub', 'Rust CLIs', 'TypeScript CLIs', 'Subxt', 'PAPI (polkadot-api)', 'MkDocs', 'Docusaurus', 'Tutorial authoring', 'Workshop delivery'],
+      items: ['Git/GitHub', 'Rust CLIs', 'TypeScript CLIs', 'MkDocs', 'Docusaurus', 'Tutorial Authoring', 'Workshop Delivery'],
     },
   ],
 };

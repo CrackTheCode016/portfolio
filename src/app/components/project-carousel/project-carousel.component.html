@@ -37,9 +37,11 @@
           </mat-card-content>
           <mat-divider />
           <mat-card-actions align="end" class="card-actions carousel-card__actions">
-            <a mat-stroked-button class="button--flat" [href]="projectUrl(project)" target="_blank" rel="noreferrer">
-              View Project
-            </a>
+            @if (projectUrl(project); as projectUrl) {
+              <a mat-stroked-button class="button--flat" [href]="projectUrl" target="_blank" rel="noreferrer">
+                View Project
+              </a>
+            }
             @if (project.liveUrl && project.repoUrl) {
               <a mat-stroked-button class="button--flat" [href]="project.repoUrl" target="_blank" rel="noreferrer">
                 GitHub

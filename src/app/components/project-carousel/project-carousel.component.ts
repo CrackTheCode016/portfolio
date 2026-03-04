@@ -17,7 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import type { ProjectItem } from '../../data/portfolio-data';
 import { RevealDirective } from '../../directives/reveal.directive';
-import { DEFAULT_GITHUB_PROFILE_URL, projectPrimaryUrl } from '../../utils/project-links';
+import { projectPrimaryUrl } from '../../utils/project-links';
 import { ProjectMediaComponent } from '../project-media/project-media.component';
 
 const PROJECT_CAROUSEL_INTERVAL_MS = 14000;
@@ -66,7 +66,7 @@ export class ProjectCarouselComponent {
     this.carouselIndex.set(index);
   }
 
-  protected projectUrl(project: ProjectItem): string {
-    return projectPrimaryUrl(project, DEFAULT_GITHUB_PROFILE_URL);
+  protected projectUrl(project: ProjectItem): string | null {
+    return projectPrimaryUrl(project);
   }
 }
