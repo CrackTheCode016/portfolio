@@ -554,6 +554,26 @@ export const portfolioProfile: PortfolioProfile = {
       },
     },
     {
+      title: 'These Are Not Laundromat Tokens: The End of the Crypto Wild West',
+      publisher: 'HackerNoon',
+      href: 'https://hackernoon.com/these-are-not-laundromat-tokens-the-end-of-the-crypto-wild-west',
+      description: 'A piece on the maturation of crypto markets and the shift away from the sector’s earlier free-for-all phase.',
+      thumbnail: {
+        src: '/imgs/laundromat_article.png',
+        alt: 'Thumbnail for the These Are Not Laundromat Tokens article.',
+      },
+    },
+    {
+      title: 'Blockchain as the Ultimate Truth Machine for GPT-Based AI (ChatGPT)',
+      publisher: 'HackerNoon',
+      href: 'https://hackernoon.com/blockchain-as-the-ultimate-truth-machine-for-gpt-based-ai-chatgpt',
+      description: 'An article exploring how blockchain can act as a trust and verification layer for GPT-based AI systems.',
+      thumbnail: {
+        src: '/imgs/ai_truth_machine_blockchain.png',
+        alt: 'Thumbnail for the Blockchain as the Ultimate Truth Machine for GPT-Based AI article.',
+      },
+    },
+    {
       title: 'Introduction to Writing RISC-V Contracts in Rust on Polkadot',
       publisher: 'DEV',
       href: 'https://dev.to/badery/introduction-to-writing-risc-v-contracts-in-rust-on-polkadot-29n7',
